@@ -1,4 +1,4 @@
-# coordinates-mock-sender
+# Coordinates-mock-sender
 
 Este script envía periódicamente solicitudes POST con datos XML a un servicio web, utilizando coordenadas y precisión obtenidas de dos archivos Excel. Los datos enviados incluyen información sobre dos dispositivos (por ejemplo, un dispositivo de la víctima y otro del inculpado). El script lee las coordenadas de cada archivo Excel y las envía cada 15 segundos, alternando entre los dispositivos.
 
