@@ -21,6 +21,7 @@ def load_config():
         "TEMP_B": os.getenv("TEMP_B"),
         "EVENT_TYPE": os.getenv("EVENT_TYPE"),
         "ALTITUDE": os.getenv("ALTITUDE"),
+        "REQUEST_INTERVAL": int(os.getenv("REQUEST_INTERVAL", 15)),
         "HEADERS": {
             "appKey": os.getenv("APP_KEY"),
             "Content-Type": "text/xml"

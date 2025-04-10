@@ -23,4 +23,4 @@ if __name__ == "__main__":
         send_request(index + 1, config["IMEI_A"], lat_a, lon_a, xml_data_a, "aggressorMessage", time_sent_a)
 
         index += 1
-        time.sleep(15)
+        time.sleep(config["REQUEST_INTERVAL"])
