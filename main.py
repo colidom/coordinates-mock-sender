@@ -1,14 +1,20 @@
+import os
 import time
-from utils import load_config, load_coordinates, get_next_coordinate
+from utils import load_config, load_coordinates, get_next_coordinate, choose_file
 from xml_util import create_xml
 from request_handler import send_request
+
 
 
 config = load_config()
 
 if __name__ == "__main__":
-    coordinates_v_df = load_coordinates(config["DATA_PATH_V"])
-    coordinates_a_df = load_coordinates(config["DATA_PATH_A"])
+    print("=== Selección de archivos ===")
+    path_agresor = choose_file("Inculpado")
+    path_victima = choose_file("Víctima")
+
+    coordinates_a_df = load_coordinates(path_agresor)
+    coordinates_v_df = load_coordinates(path_victima)
 
     index = 0
     while True:
