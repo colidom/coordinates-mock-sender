@@ -1,8 +1,8 @@
 import os
 import time
-from utils import load_config, load_coordinates, get_next_coordinate, choose_file
-from xml_util import create_xml
-from request_handler import send_request
+from src.utils import load_config, load_coordinates, get_next_coordinate, choose_file
+from src.xml_util import create_xml
+from src.request_handler import send_request
 
 
 

@@ -1,7 +1,6 @@
 import os
-from dotenv import load_dotenv
 import pandas as pd
-from datetime import datetime, timedelta, timezone
+from dotenv import load_dotenv
 
 
 def load_config():

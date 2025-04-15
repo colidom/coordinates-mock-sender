@@ -1,8 +1,10 @@
 import requests
-from utils import load_config
-from datetime import datetime
 import urllib3
+
+from datetime import datetime
 from requests.exceptions import ConnectionError, Timeout, RequestException
+from src.utils import load_config
+
 
 config = load_config()
 URL = config["URL"]
