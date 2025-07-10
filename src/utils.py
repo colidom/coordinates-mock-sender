@@ -45,18 +45,27 @@ def list_data_files(data_folder):
     return files
 
 
+import os
+import sys
+
 def choose_file(file_type):
     """Permite al usuario elegir un archivo de datos de un tipo específico."""
     files = list_data_files("data")
     print(f"\nFicheros disponibles de {file_type}:")
     for i, f in enumerate(files):
         print(f"{i + 1}. {f}")
+    print("0. Salir")
 
     while True:
         try:
-            choice = int(input(f"Por favor elige el fichero de tipo {file_type} a procesar (1-{len(files)}): "))
-            if 1 <= choice <= len(files):
+            choice = int(input(f"Por favor elige el fichero de tipo {file_type} a procesar (1-{len(files)} o 0 para salir): "))
+            if choice == 0:
+                print("👋 Saliendo de la aplicación...")
+                sys.exit(0)
+            elif 1 <= choice <= len(files):
+                print(f"Has elegido el fichero: {files[choice - 1]}")
                 return os.path.join("data", files[choice - 1])
         except ValueError:
             pass
-        print("⚠️ Invalid option. Please try again.")
+        print("⚠️ Opción inválida. Por favor inténtalo de nuevo.")
+
