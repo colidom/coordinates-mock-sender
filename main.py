@@ -1,4 +1,3 @@
-import os
 import time
 from src.utils import load_config, load_coordinates, get_next_coordinate, choose_file
 from src.xml_util import create_xml

@@ -39,14 +39,15 @@ def get_next_coordinate(df, index):
     latitude, longitude = row["location"].split(",")
     return latitude.strip(), longitude.strip(), precision
 
-def list_data_files():
-    data_folder = "./data"
+def list_data_files(data_folder):
+    """Lista los archivos de datos en la carpeta especificada."""
     files = [f for f in os.listdir(data_folder) if f.endswith(".xlsx")]
     return files
 
 
 def choose_file(file_type):
-    files = list_data_files()
+    """Permite al usuario elegir un archivo de datos de un tipo específico."""
+    files = list_data_files("data")
     print(f"\nFicheros disponibles de {file_type}:")
     for i, f in enumerate(files):
         print(f"{i + 1}. {f}")
