@@ -30,7 +30,7 @@ def send_request(iteration, imei, latitude, longitude, payload, request_type, ti
             headers["Content-Type"] = "application/json"
             response = requests.post(full_url, headers=headers, json=payload, verify=False)
         else:
-            headers["Content-Type"] = "application/xml"
+            headers["Content-Type"] = "text/xml"
             response = requests.post(full_url, headers=headers, data=payload, verify=False)
 
         # Logging
