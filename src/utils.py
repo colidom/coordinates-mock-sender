@@ -9,7 +9,7 @@ import os
 from dotenv import load_dotenv
 
 def load_config():
-    load_dotenv()
+    load_dotenv(override=True)
     return {
         "URL": os.getenv("URL"),
         "URL_BLE": os.getenv("URL_BLE"),
