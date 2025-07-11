@@ -1,7 +1,6 @@
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 import time
-import os
 from src.utils import load_config
 
 config = load_config()
@@ -43,7 +42,6 @@ def create_xml_payload(imei, latitude, longitude, precision, event_type, hour_of
 
     return ET.tostring(message, encoding="utf-8", method="xml").decode("utf-8"), now_adjusted
 
-import time
 
 def create_json_payload(imei, lat, lng, evt, config_json=None):
     timestamp = int(time.time())
