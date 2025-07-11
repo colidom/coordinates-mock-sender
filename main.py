@@ -31,14 +31,14 @@ if __name__ == "__main__":
     while True:
         if "1" in selected_devices and coordinates_a_df is not None:
             lat_a, lon_a, prec_a = get_next_coordinate(coordinates_a_df, index)
-            xml_data_a, time_sent_a = create_xml_payload(config["IMEI_A"], lat_a, lon_a, prec_a, config["EVENT_TYPE"], -2, config)
+            xml_data_a, time_sent_a = create_xml_payload(config["IMEI_A"], lat_a, lon_a, prec_a, config["EVENT_TYPE"], config)
             print_trace("Inculpado", index + 1, lat_a, lon_a, prec_a, xml_data_a, "XML")
             if SEND_REQUESTS:
                 send_request(index + 1, config["IMEI_A"], lat_a, lon_a, xml_data_a, "aggressorMessage", time_sent_a)
 
         if "2" in selected_devices and coordinates_v_df is not None:
             lat_v, lon_v, prec_v = get_next_coordinate(coordinates_v_df, index)
-            xml_data_v, time_sent_v = create_xml_payload(config["IMEI_V"], lat_v, lon_v, prec_v, config["EVENT_TYPE"], -2, config)
+            xml_data_v, time_sent_v = create_xml_payload(config["IMEI_V"], lat_v, lon_v, prec_v, config["EVENT_TYPE"], config)
             print_trace("Víctima", index + 1, lat_v, lon_v, prec_v, xml_data_v, "XML")
             if SEND_REQUESTS:
                 send_request(index + 1, config["IMEI_V"], lat_v, lon_v, xml_data_v, "victimMessage", time_sent_v)

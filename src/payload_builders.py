@@ -1,12 +1,14 @@
 import xml.etree.ElementTree as ET
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import time
 from src.utils import load_config
 
 config = load_config()
 
-def create_xml_payload(imei, latitude, longitude, precision, event_type, hour_offset=0, config_xml=None):
-    now_adjusted = (datetime.now() - timedelta(hours=abs(hour_offset))).strftime("%Y-%m-%d %H:%M:%S")
+
+def create_xml_payload(imei, latitude, longitude, precision, event_type, config_xml=None):
+    now_utc = datetime.now(timezone.utc) + timedelta()
+    time_str = now_utc.strftime("%Y-%m-%d %H:%M:%S")
 
     message = ET.Element("Message")
     sender = ET.SubElement(message, "Sender")
@@ -28,7 +30,7 @@ def create_xml_payload(imei, latitude, longitude, precision, event_type, hour_of
     event_type_elem.text = event_type
 
     time_elem = ET.SubElement(message, "Time")
-    time_elem.text = now_adjusted
+    time_elem.text = time_str
 
     position = ET.SubElement(message, "Position")
     lon = ET.SubElement(position, "Longitude")
@@ -40,7 +42,7 @@ def create_xml_payload(imei, latitude, longitude, precision, event_type, hour_of
     prec = ET.SubElement(position, "Precision")
     prec.text = precision
 
-    return ET.tostring(message, encoding="utf-8", method="xml").decode("utf-8"), now_adjusted
+    return ET.tostring(message, encoding="utf-8", method="xml").decode("utf-8"), time_str
 
 
 def create_json_payload(imei, lat, lng, evt, config_json=None):
