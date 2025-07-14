@@ -45,17 +45,18 @@ def create_xml_payload(imei, latitude, longitude, precision, event_type, config_
     return ET.tostring(message, encoding="utf-8", method="xml").decode("utf-8"), time_str
 
 
-def create_json_payload(imei, lat, lng, evt, config_json=None):
+def create_json_payload(imei, lat, lng, config_json=None):
     timestamp = int(time.time())
 
     payload = {
         "msg": "loc",
         "wifi": config_json["JSON_WIFI"],
-        "evt": evt,
+        "evt": 3, 
         "temp": int(float(config_json["TEMP_B"]) * 1000),
         "rssi": int(config_json["JSON_RSSI"]),
         "mnc": int(config_json["JSON_MNC"]),
         "sw": config_json["JSON_SW"],
+        "lng": str(lng),
         "rsrp": int(config_json["JSON_RSRP"]),
         "acl": int(config_json["JSON_ACL"]),
         "mcc": int(config_json["JSON_MCC"]),
@@ -68,9 +69,7 @@ def create_json_payload(imei, lat, lng, evt, config_json=None):
         "imei": imei,
         "time": timestamp,
         "up": timestamp,
-        "lat": lat,
-        "lng": lng,
+        "lat": str(lat),
         "cid": int(config_json["JSON_CID"])
     }
     return payload
-

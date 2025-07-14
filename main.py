@@ -44,11 +44,11 @@ if __name__ == "__main__":
                 send_request(index + 1, config["IMEI_V"], lat_v, lon_v, xml_data_v, "victimMessage", time_sent_v)
 
         if "3" in selected_devices and coordinates_b_df is not None:
-            lat_b, lon_b, prec_b = get_next_coordinate(coordinates_b_df, index)
-            json_data_b = create_json_payload(config["IMEI_B"], lat_b, lon_b, 3, config)
-            print_trace("Brazalete", index + 1, lat_b, lon_b, prec_b, json_data_b, "JSON")
+            lat_b, lng_b, prec_b = get_next_coordinate(coordinates_b_df, index)
+            json_data_b = create_json_payload(config["IMEI_B"], lat_b, lng_b, config)
+            print_trace("Brazalete", index + 1, lat_b, lng_b, prec_b, json_data_b, "JSON")
             if SEND_REQUESTS:
-                send_request(index + 1, config["IMEI_B"], lat_b, lon_b, json_data_b, "receiveMessage", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-
+                send_request(index + 1, config["IMEI_B"], lat_b, lng_b, json_data_b, "receiveMessage", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
         index += 1
+
         time.sleep(config["REQUEST_INTERVAL"])
