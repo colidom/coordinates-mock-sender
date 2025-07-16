@@ -53,8 +53,12 @@ def load_config():
 
 def load_coordinates(data_path):
     """Carga las coordenadas desde el archivo Excel."""
-    df = pd.read_excel(data_path)
-    return df[["precision", "location"]]
+    try:
+        df = pd.read_excel(data_path)
+        return df[["precision", "location"]]
+    except PermissionError:
+        print(f"\n❌ El archivo '{data_path}' está abierto en otra aplicación (Excel). Ciérralo e inténtalo de nuevo.")
+        sys.exit(1)
 
 def get_next_coordinate(df, index):
     """Obtiene la siguiente coordenada del DataFrame."""
