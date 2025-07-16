@@ -45,7 +45,7 @@ if __name__ == "__main__":
 
         if "3" in selected_devices and coordinates_b_df is not None:
             lat_b, lng_b, prec_b = get_next_coordinate(coordinates_b_df, index)
-            json_data_b = create_json_payload(config["IMEI_B"], lat_b, lng_b, config)
+            json_data_b = create_json_payload(config["IMEI_B"], lat_b, lng_b, prec_b, config)
             print_trace("Brazalete", index + 1, lat_b, lng_b, prec_b, json_data_b, "JSON")
             if SEND_REQUESTS:
                 send_request(index + 1, config["IMEI_B"], lat_b, lng_b, json_data_b, "receiveMessage", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
